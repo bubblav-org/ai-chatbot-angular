@@ -1,59 +1,44 @@
 {
   "name": "@bubblav/ai-chatbot-angular",
-  "version": "1.0.1",
-  "description": "Angular component for embedding the BubblaV AI chatbot widget",
-  "type": "module",
+  "version": "1.0.2",
+  "description": "BubblaV AI chatbot widget for Angular applications",
+  "peerDependencies": {
+    "@angular/common": ">=14.0.0",
+    "@angular/core": ">=14.0.0"
+  },
+  "devDependencies": {
+    "@angular/core": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "files": [
     "dist",
     "README.md"
   ],
-  "scripts": {
-    "build": "ng-packagr -p ng-package.json",
-    "build:watch": "ng-packagr -p ng-package.json --watch",
-    "dev": "ng-packagr -p ng-package.json --watch",
-    "prepublishOnly": "npm run build",
-    "type-check": "tsc --noEmit"
-  },
   "keywords": [
     "bubblav",
     "chatbot",
     "ai",
     "widget",
     "angular",
-    "angular-component"
+    "customer-support"
   ],
-  "author": "BubblaV",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/bubblav-org/ai-chatbot-angular.git",
     "directory": "packages/ai-chatbot-angular"
   },
-  "peerDependencies": {
-    "@angular/common": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0",
-    "@angular/core": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0",
-    "rxjs": "^6.5.0 || ^7.0.0"
-  },
-  "devDependencies": {
-    "@angular/common": "^21.1.5",
-    "@angular/compiler": "^21.1.5",
-    "@angular/compiler-cli": "^21.1.5",
-    "@angular/core": "^21.1.5",
-    "ng-packagr": "^21.1.0",
-    "rxjs": "^7.8.1",
-    "typescript": "~5.9.3"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "sideEffects": false
+  "homepage": "https://docs.bubblav.com/user-guide/installation"
 }
