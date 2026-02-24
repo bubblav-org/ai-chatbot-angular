@@ -1,6 +1,6 @@
 {
   "name": "@bubblav/ai-chatbot-angular",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angular component for embedding the BubblaV AI chatbot widget",
   "type": "module",
   "main": "./dist/index.js",
