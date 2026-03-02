@@ -1,25 +1,27 @@
 {
   "name": "@bubblav/ai-chatbot-angular",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "BubblaV AI chatbot widget for Angular applications",
   "peerDependencies": {
     "@angular/common": ">=14.0.0",
     "@angular/core": ">=14.0.0"
   },
   "devDependencies": {
-    "@angular/core": "^17.0.0",
-    "@angular/common": "^17.0.0",
-    "typescript": "^5.0.0"
+    "@angular/core": "^21.0.0",
+    "@angular/common": "^21.0.0",
+    "@angular/compiler-cli": "^21.0.0",
+    "ng-packagr": "^21.0.0",
+    "typescript": "^5.6.0"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json"
+    "build": "ng-packagr -p ng-package.json"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "default": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     }
   },
   "files": [
