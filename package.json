@@ -1,6 +1,6 @@
 {
   "name": "@bubblav/ai-chatbot-angular",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "BubblaV AI chatbot widget for Angular applications",
   "peerDependencies": {
     "@angular/common": ">=14.0.0",
@@ -14,15 +14,7 @@
     "typescript": "^5.6.0"
   },
   "scripts": {
-    "build": "ng-packagr -p ng-package.json"
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
+    "build": "ng-packagr -p ng-package.json && node -e \"const fs=require('fs'); const src=require('./dist/package.json'); const root=require('./package.json'); root.main='dist/'+src.module; root.module='dist/'+src.module; root.types='dist/'+src.typings; root.typings='dist/'+src.typings; const typesPath=src.exports['.'].types.replace(/^\\.\\//,''); const defaultPath=src.exports['.'].default.replace(/^\\.\\//,''); root.exports={'./package.json':{'default':'./package.json'}, '.':{'types':'./dist/'+typesPath,'default':'./dist/'+defaultPath}}; root.sideEffects=src.sideEffects; root.dependencies=src.dependencies; fs.writeFileSync('./package.json', JSON.stringify(root, null, 2));\""
   },
   "files": [
     "dist",
@@ -42,5 +34,22 @@
     "url": "https://github.com/bubblav-org/ai-chatbot-angular.git",
     "directory": "packages/ai-chatbot-angular"
   },
-  "homepage": "https://docs.bubblav.com/user-guide/installation"
+  "homepage": "https://docs.bubblav.com/user-guide/installation",
+  "module": "dist/fesm2022/bubblav-ai-chatbot-angular.mjs",
+  "typings": "dist/types/bubblav-ai-chatbot-angular.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./dist/types/bubblav-ai-chatbot-angular.d.ts",
+      "default": "./dist/fesm2022/bubblav-ai-chatbot-angular.mjs"
+    }
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "main": "dist/fesm2022/bubblav-ai-chatbot-angular.mjs",
+  "types": "dist/types/bubblav-ai-chatbot-angular.d.ts"
 }

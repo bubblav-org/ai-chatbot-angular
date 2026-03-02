@@ -1,5 +1,4 @@
-import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Injectable } from '@angular/core';
 
 /**
  * Interface for the BubblaV widget API exposed on the window object
@@ -20,10 +19,8 @@ export interface BubblaVAPI {
  */
 @Injectable({ providedIn: 'root' })
 export class BubblaVWidgetService {
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
-
   private get api(): BubblaVAPI | null {
-    if (!isPlatformBrowser(this.platformId)) return null;
+    if (typeof window === 'undefined') return null;
     return (window as any).BubblaV ?? null;
   }
 

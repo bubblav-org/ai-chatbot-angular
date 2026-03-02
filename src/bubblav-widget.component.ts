@@ -3,10 +3,7 @@ import {
   Input,
   OnInit,
   OnDestroy,
-  PLATFORM_ID,
-  Inject,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 
 const WIDGET_SRC = 'https://www.bubblav.com/widget.js';
 const SCRIPT_ATTR = 'data-bubblav-widget';
@@ -33,10 +30,8 @@ export class BubblaVWidgetComponent implements OnInit, OnDestroy {
   /** Your website ID from the BubblaV dashboard */
   @Input({ required: true }) websiteId!: string;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
-
   ngOnInit(): void {
-    if (!isPlatformBrowser(this.platformId)) return;
+    if (typeof window === 'undefined') return;
 
     // Avoid injecting the script twice
     if (document.querySelector(`script[${SCRIPT_ATTR}]`)) return;
