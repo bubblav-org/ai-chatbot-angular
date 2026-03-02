@@ -1,6 +1,6 @@
 {
   "name": "@bubblav/ai-chatbot-angular",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "BubblaV AI chatbot widget for Angular applications",
   "peerDependencies": {
     "@angular/common": ">=14.0.0",
@@ -14,7 +14,8 @@
     "typescript": "^5.6.0"
   },
   "scripts": {
-    "build": "ng-packagr -p ng-package.json && node -e \"const fs=require('fs'); const src=require('./dist/package.json'); const root=require('./package.json'); root.main='dist/'+src.module; root.module='dist/'+src.module; root.types='dist/'+src.typings; root.typings='dist/'+src.typings; const typesPath=src.exports['.'].types.replace(/^\\.\\//,''); const defaultPath=src.exports['.'].default.replace(/^\\.\\//,''); root.exports={'./package.json':{'default':'./package.json'}, '.':{'types':'./dist/'+typesPath,'default':'./dist/'+defaultPath}}; root.sideEffects=src.sideEffects; root.dependencies=src.dependencies; fs.writeFileSync('./package.json', JSON.stringify(root, null, 2));\""
+    "prebuild": "node -e \"const fs=require('fs'); const pkg=require('./package.json'); delete pkg.exports; fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2));\"",
+    "build": "ng-packagr -p ng-package.json && node build-postprocess.cjs"
   },
   "files": [
     "dist",
@@ -37,19 +38,20 @@
   "homepage": "https://docs.bubblav.com/user-guide/installation",
   "module": "dist/fesm2022/bubblav-ai-chatbot-angular.mjs",
   "typings": "dist/types/bubblav-ai-chatbot-angular.d.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "main": "dist/fesm2022/bubblav-ai-chatbot-angular.mjs",
+  "types": "dist/types/bubblav-ai-chatbot-angular.d.ts",
   "exports": {
     "./package.json": {
       "default": "./package.json"
     },
     ".": {
       "types": "./dist/types/bubblav-ai-chatbot-angular.d.ts",
+      "import": "./dist/fesm2022/bubblav-ai-chatbot-angular.mjs",
       "default": "./dist/fesm2022/bubblav-ai-chatbot-angular.mjs"
     }
-  },
-  "sideEffects": false,
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "main": "dist/fesm2022/bubblav-ai-chatbot-angular.mjs",
-  "types": "dist/types/bubblav-ai-chatbot-angular.d.ts"
+  }
 }
